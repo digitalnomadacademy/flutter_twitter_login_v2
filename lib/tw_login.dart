@@ -17,8 +17,7 @@ class TwitterLogin {
   TwitterLogin({
     required this.consumerKey,
     required this.consumerSecret,
-  })
-      : assert(consumerKey != null && consumerKey.isNotEmpty,
+  })  : assert(consumerKey != null && consumerKey.isNotEmpty,
             'Consumer key may not be null or empty.'),
         assert(consumerSecret != null && consumerSecret.isNotEmpty,
             'Consumer secret may not be null or empty.'),
@@ -102,7 +101,7 @@ class TwitterLogin {
   /// See the [TwitterLoginResult] class for more documentation.
   Future<TwitterLoginResult> authorize() async {
     final Map<dynamic, dynamic> result =
-        await (channel.invokeMethod('authorize', _keys) as FutureOr<Map<dynamic, dynamic>>);
+        await (channel.invokeMethod('authorize', _keys));
 
     return new TwitterLoginResult._(result.cast<String, dynamic>());
   }
